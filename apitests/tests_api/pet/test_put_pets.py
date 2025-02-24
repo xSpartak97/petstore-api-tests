@@ -1,5 +1,6 @@
 from apitests.src.utilities.requestsUtility import RequestsUtility
 from apitests.src.utilities.apihelperUtility import ApiHelperUtility
+from apitests.src.utilities import dataUtility
 import logging as logger
 import pytest
 import pdb
@@ -38,3 +39,21 @@ def test_update_a_pet():
 
     # assertion
     assert api_info['name'] == payload['name']
+
+
+@pytest.mark.smoke
+@pytest.mark.xfail
+@pytest.mark.tcid10
+# PUT /pet - update an existing pet
+def test_update_a_pet_with_invalid_id():
+    logger.info("TEST: Update an existing pet with invalid pet ID")
+
+    # payload prepare
+    payload = dataUtility.request_json_file('petInvalidData.json')
+
+    # call the api
+    req_helper = RequestsUtility()
+    api_info = req_helper.put(endpoint='/pet', payload=payload, expected_status_code=404)
+    pdb.set_trace()
+    # assertion
+    assert api_info['message'] == payload['Pet not found']
