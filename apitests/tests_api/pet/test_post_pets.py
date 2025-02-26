@@ -3,7 +3,6 @@ from apitests.src.utilities.apihelperUtility import ApiHelperUtility
 import logging as logger
 import pytest
 import random
-import pdb
 
 
 @pytest.mark.smoke

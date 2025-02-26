@@ -3,7 +3,6 @@ from apitests.src.utilities.apihelperUtility import ApiHelperUtility
 from apitests.src.utilities import dataUtility
 import logging as logger
 import pytest
-import pdb
 
 
 @pytest.mark.smoke

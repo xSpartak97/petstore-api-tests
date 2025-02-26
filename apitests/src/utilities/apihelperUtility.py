@@ -23,7 +23,23 @@ class ApiHelperUtility(object):
         # return random ID from the api call
         return int(api_info[random_id]['id'])
 
+    @staticmethod
+    def create_user():
 
-if __name__ == "__main__":
-    r = ApiHelperUtility.get_random_pet_id()
-    pdb.set_trace()
+        # prepare payload
+        payload = {
+            "id": 0,
+            "username": "aqa_api",
+            "firstName": "string",
+            "lastName": "string",
+            "email": "string",
+            "password": "string",
+            "phone": "string",
+            "userStatus": 0
+        }
+
+        # call the api
+        req_helper = RequestsUtility()
+        api_info = req_helper.post(endpoint='/user', payload=payload, expected_status_code=200)
+
+        return payload['username']
