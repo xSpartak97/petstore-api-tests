@@ -1,5 +1,3 @@
-import pdb
-
 from apitests.src.utilities.requestsUtility import RequestsUtility
 from apitests.src.utilities.apihelperUtility import ApiHelperUtility
 import logging as logger

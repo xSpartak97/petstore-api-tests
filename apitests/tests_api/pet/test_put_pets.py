@@ -53,6 +53,6 @@ def test_update_a_pet_with_invalid_id():
     # call the api
     req_helper = RequestsUtility()
     api_info = req_helper.put(endpoint='/pet', payload=payload, expected_status_code=404)
-    pdb.set_trace()
+
     # assertion
     assert api_info['message'] == payload['Pet not found']
