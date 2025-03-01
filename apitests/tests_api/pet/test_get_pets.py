@@ -34,7 +34,7 @@ def test_find_pet_by_id():
 
     # call the api
     req_helper = RequestsUtility()
-    pet_id = ApiHelperUtility.get_random_pet_id()
+    pet_id = ApiHelperUtility.create_pet()
 
     api_info = req_helper.get(endpoint=f'/pet/{pet_id}', expected_status_code=200)
 

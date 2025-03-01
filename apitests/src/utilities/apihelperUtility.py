@@ -11,21 +11,50 @@ class ApiHelperUtility(object):
 
     @staticmethod
     def get_random_pet_id():
-
         statuses = ['available', 'pending', 'sold']
         status = {"status": random.choice(statuses)}
 
         # call the api
         req_helper = RequestsUtility()
         api_info = req_helper.get(endpoint='/pet/findByStatus', params=status, expected_status_code=200)
-        random_id = random.randint(0, len(api_info[:3]) - 1)
+        pet_id = api_info[0]['id']
 
-        # return random ID from the api call
-        return int(api_info[random_id]['id'])
+        # return ID from the api call
+        return pet_id
+
+    @staticmethod
+    def create_pet():
+        # prepare payload
+        statuses = ['available', 'pending', 'sold']
+        status = {"status": random.choice(statuses)}
+        payload = {
+            "id": 123,
+            "category": {
+                "id": 123,
+                "name": "Shpitz"
+            },
+            "name": "Jastin",
+            "photoUrls": [
+                "string"
+            ],
+            "tags": [
+                {
+                    "id": 0,
+                    "name": "string"
+                }
+            ],
+            "status": f"{status}"
+        }
+
+        # call the api
+        req_helper = RequestsUtility()
+        api_info = req_helper.post(endpoint='/pet', payload=payload, expected_status_code=200)
+        pet_id = api_info['id']
+
+        return pet_id
 
     @staticmethod
     def create_user():
-
         # prepare payload
         payload = {
             "id": 0,

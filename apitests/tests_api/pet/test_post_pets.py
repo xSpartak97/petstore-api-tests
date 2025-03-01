@@ -1,3 +1,5 @@
+import pdb
+
 from apitests.src.utilities.requestsUtility import RequestsUtility
 from apitests.src.utilities.apihelperUtility import ApiHelperUtility
 import logging as logger
@@ -52,14 +54,15 @@ def test_update_a_pet():
                "Content-Type": "application/x-www-form-urlencoded"}
 
     # prepare params
-    random_pet_id = ApiHelperUtility.get_random_pet_id()
+    pet_id = ApiHelperUtility.create_pet()
     params = {"name": "Laki", "status": "pending"}
 
     # call the api
     req_helper = RequestsUtility()
-    api_info = req_helper.post(endpoint=f'/pet/{random_pet_id}', params=params, headers=headers, expected_status_code=200)
+    api_info = req_helper.post(endpoint=f'/pet/{pet_id}', params=params, headers=headers, expected_status_code=200)
 
-    assert api_info['message'] == str(random_pet_id)
+    # assertion
+    assert api_info['message'] == str(pet_id)
 
 
 @pytest.mark.smoke

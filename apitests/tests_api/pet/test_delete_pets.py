@@ -11,10 +11,10 @@ def test_delete_a_pet():
     logger.info("TEST: Delete an existing pet")
 
     # get random pet id
-    random_pet_id = ApiHelperUtility.get_random_pet_id()
+    pet_id = ApiHelperUtility.create_pet()
 
     # call the api
     req_helper = RequestsUtility()
-    api_info = req_helper.delete(f"/pet/{random_pet_id}")
+    api_info = req_helper.delete(f"/pet/{pet_id}")
 
-    assert str(random_pet_id) == api_info['message']
+    assert str(pet_id) == api_info['message']
