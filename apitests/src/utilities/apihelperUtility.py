@@ -1,5 +1,3 @@
-import pdb
-
 from apitests.src.utilities.requestsUtility import RequestsUtility
 import random
 
