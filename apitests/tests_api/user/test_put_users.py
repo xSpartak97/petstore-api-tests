@@ -13,7 +13,7 @@ def test_update_user():
     # prepare payload
     user_name = ApiHelperUtility.create_user()
     payload = {
-        "id": "unknown",
+        "id": 1,
         "username": "aqa_api_updated",
         "firstName": "api",
         "lastName": "test",
