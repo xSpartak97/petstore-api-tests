@@ -8,4 +8,4 @@ The project can be cloned and tests can be run (read below).
 * create venv;
 * clone project;
 * install requirements (```pip install -r requirements.txt```);
-* run tests (```pytest -v -m "smoke"```). It will run all the tests that the project contains
+* run tests (```pytest -v -m "smoke"```) or with generating html report (```pytest -v -m "smoke" --html=report.html```). It will run all the tests that the project contains.
